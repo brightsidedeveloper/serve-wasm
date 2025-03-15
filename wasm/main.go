@@ -11,7 +11,7 @@ func main() {
 
 	goat.Log("Hi from WASM!")
 
-	goat.RenderRoot(drivers.App())
+	drivers.RouterProvider()
 
 	<-done
 }
