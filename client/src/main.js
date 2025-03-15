@@ -1,3 +1,4 @@
+import './styles.css'
 import './wasm_exec'
 
 const go = new Go()
