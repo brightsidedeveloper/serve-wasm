@@ -1,0 +1,9 @@
+package templates
+
+templ App(message string, err error) {
+	if err != nil {
+		<p>{ err.Error() }</p>
+	} else {
+		<p>{ message }</p>
+	}
+}
