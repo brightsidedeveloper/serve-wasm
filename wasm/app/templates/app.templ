@@ -1,9 +1,12 @@
 package templates
 
 templ App(message string, err error) {
-	if err != nil {
-		<p>{ err.Error() }</p>
-	} else {
-		<p>{ message }</p>
-	}
+	<div id="App" style="font-family: Arial, Helvetica, sans-serif;">
+		if err != nil {
+			<p>{ err.Error() }</p>
+		} else {
+			<p>{ message }</p>
+		}
+		<button onclick={ templ.JSFuncCall("goat") }>Click if goated</button>
+	</div>
 }

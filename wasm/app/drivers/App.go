@@ -1,11 +1,14 @@
 package drivers
 
 import (
+	"syscall/js"
 	"wasm/app/api"
 	"wasm/app/templates"
 
 	"github.com/brightsidedeveloper/goat"
 )
+
+var message string
 
 func App() goat.TemplJoint {
 
@@ -15,5 +18,13 @@ func App() goat.TemplJoint {
 		goat.Log("Also, the server wanted you to know: ", msg)
 	}
 
-	return templates.App(msg, err)
+	goat.JSFunc("goat", func(this js.Value, args []js.Value) any {
+		message = "FACTS"
+		goat.Render("App", templates.App(message, nil))
+		return nil
+	})
+
+	message = msg
+
+	return templates.App(message, err)
 }
