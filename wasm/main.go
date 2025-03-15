@@ -1,7 +1,7 @@
 package main
 
 import (
-	"wasm/app/drivers"
+	"wasm/app/routes"
 
 	"github.com/brightsidedeveloper/goat"
 )
@@ -11,7 +11,7 @@ func main() {
 
 	goat.Log("Hi from WASM!")
 
-	drivers.RouterProvider()
+	routes.RouterProvider()
 
 	<-done
 }

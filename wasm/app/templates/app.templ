@@ -1,16 +1,37 @@
 package templates
 
 templ App(message string, err error) {
-	<div id="App" style="font-family: Arial, Helvetica, sans-serif;">
-		if err != nil {
-			<p>{ err.Error() }</p>
-		} else {
-			<p>{ message }</p>
-		}
-		<button onclick={ templ.JSFuncCall("goat") }>Click if goated</button>
+	<div id="App">
+		<nav>
+			<a href="/">Home</a>
+			<a href="/page">Page</a>
+			<a href="/user/420">User</a>
+		</nav>
+		<div style="font-family: Arial, Helvetica, sans-serif;">
+			if err != nil {
+				<p>{ err.Error() }</p>
+			} else {
+				<p>{ message }</p>
+			}
+			<button onclick={ templ.JSFuncCall("goat") }>Click if goated</button>
+		</div>
 	</div>
 }
 
 templ NotFound() {
+	<nav>
+		<a href="/">Home</a>
+		<a href="/page">Page</a>
+		<a href="/user/420">User</a>
+	</nav>
 	<div>404 - not found</div>
+}
+
+templ User(id string) {
+	<nav>
+		<a href="/">Home</a>
+		<a href="/page">Page</a>
+		<a href="/user/420">User</a>
+	</nav>
+	<div>User: { id }</div>
 }

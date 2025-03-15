@@ -3,31 +3,10 @@ package drivers
 import (
 	"syscall/js"
 	"wasm/app/api"
-	"wasm/app/router"
 	"wasm/app/templates"
 
 	"github.com/brightsidedeveloper/goat"
 )
-
-func RouterProvider() {
-
-	router := router.NewRouter()
-
-	router.Register("", func(params map[string]string) {
-		goat.RenderRoot(App())
-	})
-
-	router.Register("page", func(params map[string]string) {
-		goat.RenderRoot(templates.Page())
-	})
-
-	router.Register("404", func(params map[string]string) {
-		goat.RenderRoot(templates.NotFound())
-	})
-
-	router.SetupEventListeners()
-
-}
 
 var message string
 
@@ -48,4 +27,13 @@ func App() goat.TemplJoint {
 	message = msg
 
 	return templates.App(message, err)
+}
+
+func User(params map[string]string) goat.TemplJoint {
+	id, ok := params["id"]
+	if !ok {
+		id = "Not Found"
+	}
+
+	return templates.User(id)
 }
